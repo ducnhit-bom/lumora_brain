@@ -16,7 +16,7 @@ Local development uses separate FE and BE repos. Keep `lumora_brain` for shared 
 ## Frontend
 
 ```bash
-cd /Users/ducnh/Documents/projects/lumora/lumora_fe
+cd /Users/ducnh/Documents/projects/lumora/lumora_fe/lumora_fe
 flutter pub get
 flutter run
 ```

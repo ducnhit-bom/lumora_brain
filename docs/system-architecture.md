@@ -88,7 +88,7 @@ Railway is the default staging target for MVP unless implementation discovers a 
 
 ## Verification Standards
 
-- Frontend: run `flutter analyze` from `/Users/ducnh/Documents/projects/lumora/lumora_fe`.
+- Frontend: run `flutter analyze` from `/Users/ducnh/Documents/projects/lumora/lumora_fe/lumora_fe`.
 - Backend syntax: run `python3 -m py_compile app/main.py` from `/Users/ducnh/Documents/projects/lumora/lumora_be`.
 - Backend runtime: run FastAPI locally and check health/API docs once dependencies are installed.
 
