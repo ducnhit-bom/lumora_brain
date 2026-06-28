@@ -9,6 +9,7 @@ Contracts may change during implementation, but changes that affect FE/BE integr
 ## Global Rules
 
 - All protected endpoints require `Authorization: Bearer <token>`.
+- Auth tokens are opaque random values. Backend stores only token hashes in `auth_sessions`.
 - All timestamps should be ISO 8601 strings.
 - Server validates user ownership for every user-owned resource.
 - Server should return friendly structured errors, never raw internal exceptions or raw AI provider errors.
@@ -56,7 +57,7 @@ Response:
 
 ```json
 {
-  "accessToken": "jwt",
+  "accessToken": "opaque_access_token",
   "user": {
     "id": "user_id",
     "name": "Linh Nguyen",
@@ -89,6 +90,18 @@ Response:
   "id": "user_id",
   "name": "Linh Nguyen",
   "email": "linh@example.com"
+}
+```
+
+### `POST /auth/logout`
+
+Protected. Revokes the current database-backed auth session.
+
+Response:
+
+```json
+{
+  "status": "ok"
 }
 ```
 
@@ -462,6 +475,7 @@ Response: same shape as `GET /settings`.
 - Skip session endpoint: included in MVP.
 - Reflection max length: 500 characters.
 - Skipped reflections: not persisted in MVP.
+- Auth token strategy: opaque DB-backed bearer token, hash stored in Supabase Postgres.
 
 ## References
 

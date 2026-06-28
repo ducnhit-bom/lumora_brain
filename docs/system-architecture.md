@@ -40,7 +40,7 @@ Recommended stack:
 - PostgreSQL.
 - SQLAlchemy.
 - Alembic migrations.
-- JWT authentication.
+- Database-backed opaque bearer tokens stored as hashes in PostgreSQL/Supabase.
 
 Initial backend modules:
 

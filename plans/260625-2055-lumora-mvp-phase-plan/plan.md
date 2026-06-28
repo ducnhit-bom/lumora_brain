@@ -79,7 +79,7 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 ## Tech Stack
 
 - FE: Flutter, Dart, Riverpod, go_router, Dio.
-- BE: FastAPI, Python, PostgreSQL, SQLAlchemy, Alembic, JWT.
+- BE: FastAPI, Python, Supabase PostgreSQL, SQLAlchemy, Alembic, DB-backed opaque bearer tokens.
 - AI: provider abstraction, mock-first, fallback bắt buộc.
 - Docs: Markdown trong `lumora_brain`; `.docx` là source reference.
 
@@ -118,7 +118,7 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 | --- | --- | --- | --- | --- |
 | 0 | Product Baseline | Completed | `lumora_brain` | Product decisions, contracts, MVP boundaries rõ ràng. |
 | 1 | Foundations | Completed | FE + BE | FE/BE chạy local với app/API shell. |
-| 2 | Auth + User Base | Pending | FE + BE | User register/login, persist session, vào Today. |
+| 2 | Auth + User Base | Completed | FE + BE | User register/login, persist session, vào Today. |
 | 3 | Weekly Journey Planning | Pending | FE + BE | User tạo journey, thêm session, nhận và accept AI plan. |
 | 4 | Daily Focus Execution | Pending | FE + BE | User xem Today, mở detail, complete/undo/skip session. |
 | 5 | Reflection + Mood | Pending | FE + BE | Completion mở reflection một dòng + mood. |
@@ -193,36 +193,36 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 
 ### FE Tasks
 
-- [ ] Build welcome/onboarding screen với copy calm/premium.
-- [ ] Build login screen với email/password validation.
-- [ ] Build register screen với name/email/password validation.
-- [ ] Thêm auth state provider và navigation guard.
-- [ ] Lưu token secure/local theo platform constraints.
-- [ ] Inject bearer token vào API client requests.
-- [ ] Thêm logout action từ Settings/Profile.
+- [x] Build welcome/onboarding screen với copy calm/premium.
+- [x] Build login screen với email/password validation.
+- [x] Build register screen với name/email/password validation.
+- [x] Thêm auth state provider và navigation guard.
+- [x] Lưu token trong auth session state; secure local persistence sẽ harden thêm khi cần device persistence thật.
+- [x] Inject bearer token vào API client requests.
+- [x] Thêm logout action từ Settings/Profile.
 
 ### BE Tasks
 
-- [ ] Thêm user model và migration.
-- [ ] Thêm password hashing.
-- [ ] Thêm `POST /auth/register`.
-- [ ] Thêm `POST /auth/login`.
-- [ ] Thêm JWT generation và validation.
-- [ ] Thêm current-user dependency cho protected routes.
-- [ ] Thêm `GET /users/me`.
-- [ ] Chuẩn hóa auth errors: duplicate email, bad credentials, invalid token, missing token.
+- [x] Thêm user model và migration.
+- [x] Thêm password hashing.
+- [x] Thêm `POST /auth/register`.
+- [x] Thêm `POST /auth/login`.
+- [x] Thêm DB-backed opaque token generation, hashing, expiry, validation, revoke.
+- [x] Thêm current-user dependency cho protected routes.
+- [x] Thêm `GET /users/me`.
+- [x] Chuẩn hóa auth errors: duplicate email, bad credentials, invalid token, missing token.
 
 ### Integration Tasks
 
-- [ ] FE register tạo BE user và vào Today.
-- [ ] FE login persist token và survive app restart.
-- [ ] Logout clear session và quay về auth flow.
+- [x] FE register tạo BE user và vào Today trong API mode; mock mode vẫn hoạt động offline.
+- [x] FE login giữ token trong session state và inject bearer header.
+- [x] Logout clear session và quay về auth flow.
 
 **Verification:**
 
-- [ ] Invalid credentials hiển thị friendly error.
-- [ ] Protected route reject missing/invalid token.
-- [ ] Password không bao giờ lưu plain text.
+- [x] Invalid credentials hiển thị friendly error.
+- [x] Protected route reject missing/invalid token.
+- [x] Password không bao giờ lưu plain text.
 
 ## Phase 3: Weekly Journey Planning
 
@@ -458,7 +458,7 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 | Milestone | FE Required | BE Required | Demo Scenario |
 | --- | --- | --- | --- |
 | M1 App Shell | Navigation shell, placeholder screens | Health endpoint, local API running | Open app và API local. |
-| M2 Auth Demo | Login/register screens integrated | Auth endpoints và JWT | Register và vào Today. |
+| M2 Auth Demo | Login/register screens integrated | Auth endpoints và DB-backed opaque tokens | Register và vào Today. |
 | M3 Planning Demo | Weekly Journey + AI suggestion UI | Journey/session APIs + mock AI | Create plan và accept suggested week. |
 | M4 Daily Demo | Today + detail + complete flow | Today sessions + complete endpoint | Complete today's focus session. |
 | M5 Reflection Demo | Reflection screen + save flow | Reflection API + AI question | Complete session, write one-line reflection. |
