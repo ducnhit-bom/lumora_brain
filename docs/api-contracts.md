@@ -107,7 +107,7 @@ Response:
 
 ## Journeys
 
-Journey status values: `draft`, `active`, `completed`.
+Journey status values: `draft`, `active`, `archived`.
 
 Focus session status values: `todo`, `scheduled`, `completed`, `skipped`.
 
@@ -231,6 +231,25 @@ Response:
 ### `POST /journeys/{journey_id}/accept`
 
 Protected. Accepts the suggested schedule and marks the journey active.
+The suggestion response is preview-only; the client sends the accepted schedule back here and the backend persists it after validation.
+
+Request:
+
+```json
+{
+  "days": [
+    {
+      "date": "2026-06-29",
+      "sessions": [
+        {
+          "sessionId": "session_id",
+          "suggestedTime": "09:00"
+        }
+      ]
+    }
+  ]
+}
+```
 
 Response:
 

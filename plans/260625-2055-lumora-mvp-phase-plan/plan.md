@@ -1,7 +1,7 @@
 ---
 status: active
 created: 2026-06-25
-updated: 2026-06-26
+updated: 2026-06-28
 language: vi
 sourceDocuments:
   - documents/01_PRD_Weekly_AI_Journal.docx
@@ -119,7 +119,7 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 | 0 | Product Baseline | Completed | `lumora_brain` | Product decisions, contracts, MVP boundaries rõ ràng. |
 | 1 | Foundations | Completed | FE + BE | FE/BE chạy local với app/API shell. |
 | 2 | Auth + User Base | Completed | FE + BE | User register/login, persist session, vào Today. |
-| 3 | Weekly Journey Planning | Pending | FE + BE | User tạo journey, thêm session, nhận và accept AI plan. |
+| 3 | Weekly Journey Planning | Completed | FE + BE | User tạo journey, thêm session, nhận và accept fallback AI plan. |
 | 4 | Daily Focus Execution | Pending | FE + BE | User xem Today, mở detail, complete/undo/skip session. |
 | 5 | Reflection + Mood | Pending | FE + BE | Completion mở reflection một dòng + mood. |
 | 6 | Weekly Review + AI Insight | Pending | FE + BE | User xem weekly summary, AI insight, recommendation. |
@@ -230,37 +230,37 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 
 ### FE Tasks
 
-- [ ] Build Weekly Journey screen.
-- [ ] Build add focus session form: title, optional note, category, priority, estimated duration.
-- [ ] Build focus session preview list.
-- [ ] Build Create AI Journey CTA.
-- [ ] Build AI Suggested Journey screen grouped by day.
-- [ ] Build accept journey action và return user to Today.
-- [ ] Giữ edit affordances nhẹ cho MVP.
+- [x] Build Weekly Journey screen.
+- [x] Build add focus session form: title, optional note, category, priority, estimated duration.
+- [x] Build focus session preview list.
+- [x] Build Create AI Journey CTA.
+- [x] Build AI Suggested Journey screen grouped by day.
+- [x] Build accept journey action và return user to Today.
+- [x] Giữ edit affordances nhẹ cho MVP.
 
 ### BE Tasks
 
-- [ ] Thêm weekly journey model: owner, week start, status, created timestamp.
-- [ ] Thêm focus session model: owner, journey, title, note, category, priority, scheduled datetime, status.
-- [ ] Thêm `POST /journeys`.
-- [ ] Thêm `POST /journeys/{journey_id}/sessions`.
-- [ ] Thêm `GET /journeys/current`.
-- [ ] Thêm AI service interface với mock provider.
-- [ ] Thêm `POST /journeys/{journey_id}/suggest` trả grouped schedule.
-- [ ] Thêm `POST /journeys/{journey_id}/accept`.
-- [ ] Validate ownership trên mọi journey/session endpoint.
+- [x] Thêm weekly journey model: owner, week start, status, created timestamp.
+- [x] Thêm focus session model: owner, journey, title, note, category, priority, scheduled datetime, status.
+- [x] Thêm `POST /journeys`.
+- [x] Thêm `POST /journeys/{journey_id}/sessions`.
+- [x] Thêm `GET /journeys/current`.
+- [x] Thêm fallback AI service behavior qua deterministic suggestion provider.
+- [x] Thêm `POST /journeys/{journey_id}/suggest` trả grouped schedule.
+- [x] Thêm `POST /journeys/{journey_id}/accept`.
+- [x] Validate ownership trên mọi journey/session endpoint.
 
 ### Integration Tasks
 
-- [ ] FE tạo journey bằng mock BE hoặc real BE.
-- [ ] FE hiển thị suggested weekly schedule grouped by day.
-- [ ] Accepted journey feed Today flow.
+- [x] FE tạo journey bằng mock BE hoặc real BE.
+- [x] FE hiển thị suggested weekly schedule grouped by day.
+- [x] Accepted journey cung cấp active journey data cho Today flow Phase 4.
 
 **Verification:**
 
-- [ ] User không access được journey/session của user khác.
-- [ ] AI failure trả usable fallback plan.
-- [ ] Invalid AI output không leak raw provider error ra client.
+- [x] User không access được journey/session của user khác.
+- [x] AI failure trả usable fallback plan.
+- [x] Invalid AI output không leak raw provider error ra client.
 
 ## Phase 4: Daily Focus Execution
 
