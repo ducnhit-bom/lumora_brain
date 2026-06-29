@@ -281,8 +281,11 @@ Response:
       "category": "work",
       "priority": "high",
       "estimatedMinutes": 45,
+      "scheduledDate": "2026-06-29",
       "scheduledTime": "09:00",
-      "status": "scheduled"
+      "status": "scheduled",
+      "completedAt": null,
+      "skippedAt": null
     }
   ]
 }
@@ -313,7 +316,7 @@ Response:
 
 ### `POST /sessions/{session_id}/complete`
 
-Protected. Completes a session.
+Protected. Completes a scheduled session. Completing an already completed or skipped session returns `400 invalid_state`.
 
 Response:
 
@@ -328,7 +331,7 @@ Response:
 
 ### `POST /sessions/{session_id}/undo-complete`
 
-Protected. Returns completed session to active/todo state.
+Protected. Returns a completed session to scheduled state.
 
 Response:
 
@@ -342,7 +345,7 @@ Response:
 
 ### `POST /sessions/{session_id}/skip`
 
-Protected. Skips a session for the current user.
+Protected. Skips a scheduled session for the current user.
 
 Response:
 

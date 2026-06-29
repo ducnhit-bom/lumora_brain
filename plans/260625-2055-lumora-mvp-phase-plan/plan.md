@@ -120,7 +120,7 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 | 1 | Foundations | Completed | FE + BE | FE/BE chạy local với app/API shell. |
 | 2 | Auth + User Base | Completed | FE + BE | User register/login, persist session, vào Today. |
 | 3 | Weekly Journey Planning | Completed | FE + BE | User tạo journey, thêm session, nhận và accept fallback AI plan. |
-| 4 | Daily Focus Execution | Pending | FE + BE | User xem Today, mở detail, complete/undo/skip session. |
+| 4 | Daily Focus Execution | Completed | FE + BE | User xem Today, complete/undo/skip session. |
 | 5 | Reflection + Mood | Pending | FE + BE | Completion mở reflection một dòng + mood. |
 | 6 | Weekly Review + AI Insight | Pending | FE + BE | User xem weekly summary, AI insight, recommendation. |
 | 7 | Settings + Preferences | Pending | FE + BE | User quản lý preferences cơ bản và logout. |
@@ -268,36 +268,36 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 
 ### FE Tasks
 
-- [ ] Build Today screen với hero focus card.
-- [ ] Build Today journey timeline.
-- [ ] Build focus session detail screen chỉ có thông tin cần thiết.
-- [ ] Thêm complete session action.
-- [ ] Thêm undo completion nếu BE hỗ trợ.
-- [ ] Thêm skip session entry point.
-- [ ] Thêm friendly no-session empty state.
-- [ ] Route completion sang Reflection khi response yêu cầu.
+- [x] Build Today screen với hero focus card.
+- [x] Build Today journey timeline.
+- [x] Build focus session detail screen chỉ có thông tin cần thiết.
+- [x] Thêm complete session action.
+- [x] Thêm undo completion nếu BE hỗ trợ.
+- [x] Thêm skip session entry point.
+- [x] Thêm friendly no-session empty state.
+- [x] Route completion sang Reflection khi response yêu cầu bằng Phase 5 placeholder signal.
 
 ### BE Tasks
 
-- [ ] Thêm `GET /sessions/today`.
-- [ ] Thêm `GET /sessions/{session_id}`.
-- [ ] Thêm `POST /sessions/{session_id}/complete`.
-- [ ] Thêm `POST /sessions/{session_id}/undo-complete`.
-- [ ] Thêm `POST /sessions/{session_id}/skip`.
-- [ ] Return auto-reflection metadata trong completion response.
-- [ ] Duplicate completion idempotent hoặc reject an toàn với clear error.
+- [x] Thêm `GET /sessions/today`.
+- [x] Thêm `GET /sessions/{session_id}`.
+- [x] Thêm `POST /sessions/{session_id}/complete`.
+- [x] Thêm `POST /sessions/{session_id}/undo-complete`.
+- [x] Thêm `POST /sessions/{session_id}/skip`.
+- [x] Return auto-reflection metadata trong completion response.
+- [x] Duplicate completion reject an toàn với clear error.
 
 ### Integration Tasks
 
-- [ ] Today load sessions của current user.
-- [ ] Complete session update status và mở Reflection.
-- [ ] Undo trả session về active/todo state.
+- [x] Today load sessions của current user.
+- [x] Complete session update status và mở Reflection placeholder signal.
+- [x] Undo trả session về scheduled state.
 
 **Verification:**
 
-- [ ] No-session day hiển thị recovery-focused empty state.
-- [ ] Completing already done session không corrupt data.
-- [ ] Network failures hiển thị retry/safe error state.
+- [x] No-session day hiển thị recovery-focused empty state.
+- [x] Completing already done session không corrupt data.
+- [x] Network failures hiển thị retry/safe error state.
 
 ## Phase 5: Reflection + Mood
 
