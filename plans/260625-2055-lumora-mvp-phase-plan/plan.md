@@ -122,7 +122,7 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 | 3 | Weekly Journey Planning | Completed | FE + BE | User tạo journey, thêm session, nhận và accept fallback AI plan. |
 | 4 | Daily Focus Execution | Completed | FE + BE | User xem Today, complete/undo/skip session. |
 | 5 | Reflection + Mood | Completed | FE + BE | Completion mở reflection một dòng + mood. |
-| 6 | Weekly Review + AI Insight | Pending | FE + BE | User xem weekly summary, AI insight, recommendation. |
+| 6 | Weekly Review + AI Insight | Completed | FE + BE | User xem weekly summary, fallback insight, recommendation. |
 | 7 | Settings + Preferences | Pending | FE + BE | User quản lý preferences cơ bản và logout. |
 | 8 | MVP Hardening + Beta | Pending | FE + BE + Brain | App test được end-to-end, có staging/release notes/known issues. |
 
@@ -341,35 +341,35 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 
 ### FE Tasks
 
-- [ ] Build Weekly Review screen.
-- [ ] Hiển thị completion summary không theo kiểu dense analytics dashboard.
-- [ ] Hiển thị reflection count.
-- [ ] Hiển thị mood summary.
-- [ ] Hiển thị AI insight card.
-- [ ] Hiển thị recommendation card.
-- [ ] Thêm insufficient-data empty state.
-- [ ] Thêm Create Next Week Journey CTA.
+- [x] Build Weekly Review screen.
+- [x] Hiển thị completion summary không theo kiểu dense analytics dashboard.
+- [x] Hiển thị reflection count.
+- [x] Hiển thị mood summary.
+- [x] Hiển thị fallback insight card.
+- [x] Hiển thị recommendation card.
+- [x] Thêm insufficient-data empty state.
+- [x] Thêm Create Next Week Journey CTA.
 
 ### BE Tasks
 
-- [ ] Thêm review aggregation service.
-- [ ] Calculate sessions completed, reflection count, mood distribution.
-- [ ] Thêm AI weekly insight provider.
-- [ ] Thêm rule-based fallback insight.
-- [ ] Thêm `GET /journeys/{journey_id}/review` hoặc `GET /reviews/weekly/current`.
-- [ ] Return clear empty-state response khi data insufficient.
+- [x] Thêm review aggregation service.
+- [x] Calculate sessions completed, reflection count, mood distribution.
+- [x] Deferred AI weekly insight provider; Phase 6 dùng fallback deterministic.
+- [x] Thêm rule-based fallback insight.
+- [x] Thêm `GET /journeys/{journey_id}/review`.
+- [x] Return clear empty-state response khi data insufficient.
 
 ### Integration Tasks
 
-- [ ] FE load review data từ API.
-- [ ] FE hiển thị fallback insight giống AI insight.
-- [ ] CTA start next weekly planning flow.
+- [x] FE load review data từ API.
+- [x] FE hiển thị fallback insight giống AI insight.
+- [x] CTA start next weekly planning flow.
 
 **Verification:**
 
-- [ ] Copy supportive, ngắn, không judgmental.
-- [ ] Không leak raw AI provider errors ra client.
-- [ ] Empty state rõ ràng khi chưa có data.
+- [x] Copy supportive, ngắn, không judgmental.
+- [x] Không leak raw AI provider errors ra client.
+- [x] Empty state rõ ràng khi chưa có data.
 
 ## Phase 7: Settings + Preferences
 
