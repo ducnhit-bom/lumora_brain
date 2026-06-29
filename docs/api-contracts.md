@@ -367,7 +367,7 @@ Response:
 
 ```json
 {
-  "source": "ai_or_fallback",
+  "sessionId": "session_id",
   "question": "What made this focus session meaningful?"
 }
 ```
@@ -382,13 +382,13 @@ Validation:
 - Non-empty reflection content must be at most 500 characters.
 - UI should encourage one short line, ideally 280 characters or less.
 - `mood` is optional and must be one of `energized`, `balanced`, `challenged` when provided.
+- `sessionId` must reference a completed focus session owned by the current user.
 - Skipping reflection is a frontend navigation action in MVP and does not create a reflection record.
 
 Request:
 
 ```json
 {
-  "journeyId": "journey_id",
   "sessionId": "session_id",
   "content": "I made a clear first draft.",
   "mood": "balanced"
@@ -419,6 +419,7 @@ Response:
   "reflections": [
     {
       "id": "reflection_id",
+      "journeyId": "journey_id",
       "sessionId": "session_id",
       "content": "I made a clear first draft.",
       "mood": "balanced",

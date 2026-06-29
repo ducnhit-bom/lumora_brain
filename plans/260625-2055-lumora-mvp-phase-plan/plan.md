@@ -121,7 +121,7 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 | 2 | Auth + User Base | Completed | FE + BE | User register/login, persist session, vào Today. |
 | 3 | Weekly Journey Planning | Completed | FE + BE | User tạo journey, thêm session, nhận và accept fallback AI plan. |
 | 4 | Daily Focus Execution | Completed | FE + BE | User xem Today, complete/undo/skip session. |
-| 5 | Reflection + Mood | Pending | FE + BE | Completion mở reflection một dòng + mood. |
+| 5 | Reflection + Mood | Completed | FE + BE | Completion mở reflection một dòng + mood. |
 | 6 | Weekly Review + AI Insight | Pending | FE + BE | User xem weekly summary, AI insight, recommendation. |
 | 7 | Settings + Preferences | Pending | FE + BE | User quản lý preferences cơ bản và logout. |
 | 8 | MVP Hardening + Beta | Pending | FE + BE + Brain | App test được end-to-end, có staging/release notes/known issues. |
@@ -305,35 +305,35 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 
 ### FE Tasks
 
-- [ ] Build Reflection screen auto-open sau completion.
-- [ ] Hiển thị AI question hoặc fallback question.
-- [ ] Thêm short text input với max length từ Phase 0.
-- [ ] Thêm mood selector: energized, balanced, challenged.
-- [ ] Thêm save reflection action.
-- [ ] Thêm skip reflection action.
-- [ ] Return to Today sau save hoặc skip.
+- [x] Build Reflection screen auto-open sau completion.
+- [x] Hiển thị AI question hoặc fallback question.
+- [x] Thêm short text input với max length từ Phase 0.
+- [x] Thêm mood selector: energized, balanced, challenged.
+- [x] Thêm save reflection action.
+- [x] Thêm skip reflection action.
+- [x] Return to Today sau save hoặc skip.
 
 ### BE Tasks
 
-- [ ] Thêm reflection model link với user, journey, optional session, content, mood, created timestamp.
-- [ ] Thêm `POST /reflections`.
-- [ ] Thêm `GET /journeys/{journey_id}/reflections`.
-- [ ] Thêm `GET /sessions/{session_id}/reflection-question` hoặc endpoint tương đương.
-- [ ] Thêm AI reflection question service với fallback question.
-- [ ] Validate reflection max length.
-- [ ] Skip reflection chỉ là frontend navigation action; không persist skipped reflection trong MVP.
+- [x] Thêm reflection model link với user, journey, session, content, mood, created timestamp.
+- [x] Thêm `POST /reflections`.
+- [x] Thêm `GET /journeys/{journey_id}/reflections`.
+- [x] Thêm `GET /sessions/{session_id}/reflection-question` hoặc endpoint tương đương.
+- [x] Thêm AI reflection question service với fallback question.
+- [x] Validate reflection max length.
+- [x] Skip reflection chỉ là frontend navigation action; không persist skipped reflection trong MVP.
 
 ### Integration Tasks
 
-- [ ] Completion response pass session context sang Reflection.
-- [ ] Saved reflection update weekly counts cho review.
-- [ ] Skipping reflection không block Today flow.
+- [x] Completion response pass session context sang Reflection.
+- [x] Saved reflection data available cho Weekly Review qua journey reflection list.
+- [x] Skipping reflection không block Today flow.
 
 **Verification:**
 
-- [ ] User save reflection được với hoặc không có mood.
-- [ ] Empty reflection được handle theo Phase 0 decision.
-- [ ] Long content bị reject graceful.
+- [x] User save reflection được với hoặc không có mood.
+- [x] Empty reflection được handle theo Phase 0 decision.
+- [x] Long content bị reject graceful.
 
 ## Phase 6: Weekly Review + AI Insight
 
