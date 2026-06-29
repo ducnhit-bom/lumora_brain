@@ -469,22 +469,22 @@ Response:
 {
   "autoOpenReflection": true,
   "preferredFocusTime": "09:00",
-  "maxSessionsPerDay": 3,
+  "maxSessionsPerDay": 5,
   "timezone": "Asia/Ho_Chi_Minh"
 }
 ```
 
 ### `PATCH /settings`
 
-Protected. Updates basic preferences.
+Protected. Updates basic preferences. Supports partial update — chỉ gửi field cần thay đổi.
 
-Request:
+Request (all fields optional):
 
 ```json
 {
   "autoOpenReflection": true,
   "preferredFocusTime": "09:00",
-  "maxSessionsPerDay": 3,
+  "maxSessionsPerDay": 5,
   "timezone": "Asia/Ho_Chi_Minh"
 }
 ```

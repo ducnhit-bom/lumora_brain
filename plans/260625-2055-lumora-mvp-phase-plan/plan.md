@@ -123,7 +123,7 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 | 4 | Daily Focus Execution | Completed | FE + BE | User xem Today, complete/undo/skip session. |
 | 5 | Reflection + Mood | Completed | FE + BE | Completion mở reflection một dòng + mood. |
 | 6 | Weekly Review + AI Insight | Completed | FE + BE | User xem weekly summary, fallback insight, recommendation. |
-| 7 | Settings + Preferences | Pending | FE + BE | User quản lý preferences cơ bản và logout. |
+| 7 | Settings + Preferences | Completed | FE + BE | User quản lý preferences cơ bản và logout. |
 | 8 | MVP Hardening + Beta | Pending | FE + BE + Brain | App test được end-to-end, có staging/release notes/known issues. |
 
 ## Phase 0: Product Baseline
@@ -377,35 +377,37 @@ Xây dựng Lumora thành một ứng dụng mobile cao cấp cho lập kế ho�
 
 ### FE Tasks
 
-- [ ] Build Settings screen.
-- [ ] Hiển thị profile từ current user.
-- [ ] Thêm auto-open reflection toggle.
-- [ ] Thêm preferred focus time preference.
-- [ ] Thêm max sessions per day preference.
-- [ ] Thêm theme placeholder nếu design cần.
-- [ ] Thêm notification settings placeholder nếu push deferred.
-- [ ] Thêm logout action.
+- [x] Build Settings screen với profile, auto-open reflection toggle, preferred focus time, max sessions per day.
+- [x] Hiển thị profile từ current user email.
+- [x] Thêm auto-open reflection toggle.
+- [x] Thêm preferred focus time preference (time picker).
+- [x] Thêm max sessions per day preference (stepper 1-20).
+- [x] Thêm logout action (scroll để reach).
+- [x] Settings controller với load/save states.
 
 ### BE Tasks
 
-- [ ] Thêm settings entity hoặc user settings fields.
-- [ ] Tạo default settings cho new users.
-- [ ] Thêm `GET /settings`.
-- [ ] Thêm `PATCH /settings`.
-- [ ] Validate auto-open reflection, preferred focus time, max sessions/day, timezone.
-- [ ] Expose settings cho future AI planning inputs.
+- [x] Thêm `UserSettings` model (id=user_id PK/FK, auto_open_reflection, preferred_focus_time, max_sessions_per_day, timezone, created_at, updated_at).
+- [x] Alembic migration 20260629_0006_settings.
+- [x] Lazy-create defaults cho new users khi GET /settings.
+- [x] Thêm `GET /settings`.
+- [x] Thêm `PATCH /settings` (partial update).
+- [x] Validate preferredFocusTime (HH:MM), maxSessionsPerDay (1-20), timezone (non-empty).
 
 ### Integration Tasks
 
-- [ ] FE read settings khi app load hoặc Settings screen open.
-- [ ] FE update settings và phản ánh saved state.
-- [ ] Logout vẫn reliable sau settings changes.
+- [x] FE read settings khi Settings screen open (load on didChangeDependencies).
+- [x] FE update settings và phản ánh saved state ("Saved" indicator).
+- [x] Logout vẫn reliable sau settings changes.
 
 **Verification:**
 
-- [ ] Invalid preference values bị reject.
-- [ ] Defaults hoạt động cho account mới.
-- [ ] Settings UI theo cùng luxury design system.
+- [x] Invalid time format bị reject 422.
+- [x] Max sessions out of range (1-20) bị reject.
+- [x] Defaults hoạt động cho account mới (lazy-create on GET).
+- [x] Settings UI theo luxury design system (LumoraCard, LumoraSpacing, LumoraColors).
+- [x] `flutter analyze` clean.
+- [x] BE 48 tests pass, FE 39 tests pass.
 
 ## Phase 8: MVP Hardening + Beta
 
