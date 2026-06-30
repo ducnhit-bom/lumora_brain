@@ -84,12 +84,18 @@ Each AI flow must support:
 
 ## Deployment Direction
 
-Railway is the default staging target for MVP unless implementation discovers a concrete blocker. Phase 8 should add deployment config, environment documentation, and a staging smoke-test checklist for Railway.
+Railway is the default staging target for MVP unless implementation discovers a concrete blocker. The backend now includes Docker-based Railway config and request logging. Deployment requirements and smoke-test steps are documented in `docs/deployment.md` and `docs/known-issues.md`.
+
+Current internal beta constraints:
+
+- Backend staging config exists, but a live Railway URL is not recorded yet.
+- Frontend API mode should point `LUMORA_API_BASE_URL` at the staging API URL when available.
+- Android/iOS identifiers are set to `com.lumora.app`, but production signing/provisioning remains a beta follow-up.
 
 ## Verification Standards
 
 - Frontend: run `flutter analyze` from `/Users/ducnh/Documents/projects/lumora/lumora_fe/lumora_fe`.
-- Backend syntax: run `python3 -m py_compile app/main.py` from `/Users/ducnh/Documents/projects/lumora/lumora_be`.
+- Backend syntax: run `python3 -m py_compile app/main.py` from `/Users/ducnh/Documents/projects/lumora/lumora_be/lumora_be`.
 - Backend runtime: run FastAPI locally and check health/API docs once dependencies are installed.
 
 ## References
